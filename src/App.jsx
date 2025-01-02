@@ -46,7 +46,7 @@ function App() {
           {/* <Route path="*" element={<div>없는 페이지입니다.</div>} /> */}
         </Routes>
         <div className='slider'></div>
-        <div className="container">
+        <div className="container" style={{marginTop:'30px'}}>
         <div className="row">
           {
             shoes.map((ele,i)=>{
