@@ -1,5 +1,4 @@
-import { Button, Navbar, Container, Nav} from 'react-bootstrap'
-import bg from './img/bg.jpg'
+import { Container, Nav, Navbar } from 'react-bootstrap';
 
 
 function App() {
@@ -16,11 +15,35 @@ function App() {
             </Nav>
           </Container>
         </Navbar>
-        <div className='bg' style={{backgroundImage: 'url(' + bg + ')'}}></div>
+        <div className='slider'></div>
+        <div className="container">
+        <div className="row">
+        <div className="col-md-4">1</div>
+        <div className="col-md-4">2</div>
+        <div className="col-md-4">3</div>
+         </div>
+         </div>
       </>
+      
+      <div className="row">
+        <div className="col-md-4">
+            <img src="/img/shoes1.jpg" width="80%" />
+            <h4>상품명</h4>
+            <p>상품정보</p>
+        </div>
+        <div className="col-md-4">
+            <img src="/img/shoes2.jpg" width="80%" />
+            <h4>상품명</h4>
+            <p>상품정보</p>
+        </div>
+        <div className="col-md-4">
+            <img src="/img/shoes3.jpg" width="80%" />
+            <h4>상품명</h4>
+            <p>상품정보</p>
+        </div>
+      </div>
     </div>
    
   );
 }
-
-export default App
+export default App;
