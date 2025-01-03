@@ -9,12 +9,14 @@ import Title2 from './components/Title2.jsx'
 import inike from "./db/inike.js"
 import ComNike from './components/ComNike.jsx';
 import Footer from './components/Footer.jsx';
+import axios from 'axios'
 
 
 function App() {
   let [shoes, setShoes] = useState(data);
   let navigate = useNavigate();
   let [nike, setNike] = useState(inike);
+  let [count, setCount] = useState(1);
 
   return (
     <div className='App'>
@@ -55,7 +57,26 @@ function App() {
         <Title/>
         <div className="container" style={{marginTop:'30px'}}>
         <div className="row">
-        <Button variant='outline-success'>+ 3개 상품 더 보기</Button>{' '}
+        <Button variant='outline-success' count = {count} onClick={() => {
+                 
+                 if(count==1){
+                   axios.get('https://dino-21.github.io/react_data/nike2.json').then((result)=>{
+                       let copy10 =[...nike, ...result.data];
+                       setNike(copy10);
+                       setCount(count + 1);
+              
+                 })}else if(count==2){
+                   axios.get('https://dino-21.github.io/react_data/nike3.json').then((result)=>{
+                     let copy11 =[...nike, ...result.data];
+                     setNike(copy11);
+                     setCount(count + 1);
+                    })   
+                 }
+      
+                 if(count===3){
+                   alert("더이상 상품이 없습니다.");  
+                 }
+      }}>+ 3개 상품 더 보기</Button>{' '}
             {nike.map((ele, i) => {
                   return <ComNike nike={nike[i]} key={nike[i].id} />;
         })}
