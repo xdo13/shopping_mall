@@ -1,12 +1,19 @@
+import { addItem } from '../store.jsx'
+import { useDispatch } from 'react-redux'
+import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 import React, { useState } from "react";
 import { Nav, TabContent } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 
 
+
 function Detail(props){
     let{id} = useParams();
     let [tap, setTap] = useState(0);
+    let selproduct = props.shoes.find((x) => x.id == id); 
+    let dispatch = useDispatch();
     return (
         <div className="container">
             <Nav variant="tabs" defaultActiveKey="link0">
@@ -23,13 +30,30 @@ function Detail(props){
             <TabContent tap={tap}/>
             <div className="row">
                 <div className="col-md-6">
-                    <img src={"/img/shoes" + (Number(id)+1) + ".jpg"} width="100%" />
+                    <img src={'/'+selproduct.imgUrl} width="80%" />
                 </div>
                 <div className="col-md-6">
-                    <h4 className="pt-5">{props.shoes[id].title}</h4>
-                    <p>{props.shoes[id].content}</p>
-                    <p>{props.shoes[id].price}</p>
-                    <button className="btn btn-danger">주문하기</button>
+                    <h4 className="pt-5">{selproduct.title}</h4>
+                    <p>{selproduct.content}</p>
+                    <p>{selproduct.price}</p>
+                    <Button
+                      variant="primary"
+                      onClick={() => {
+                        dispatch(
+                            addItem({
+                                id:selproduct.id,
+                                imgUrl: selproduct.imgUrl.replace("img/", ""),
+                                name: selproduct.title,
+                                count: 1,
+                            })
+                        );
+                      }}
+                      style={{ marginRight: "10px"}}
+                      >주문하기</Button>
+
+                      <Link to="/cart">
+                        <Button variant="outline-success">주문상품 확인하기</Button>
+                      </Link>
                 </div>
             </div>
         </div>

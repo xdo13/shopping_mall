@@ -71,9 +71,10 @@ let user = createSlice({
 // addCount(1)
 
 export let { addCount, decreaseCount, addItem, deleteItem, sortName } = cart.actions;
+
 export default configureStore({
-    reducer: {
-      user: user.reducer,
-      cart: cart.reducer,
-    },
-  });
+  reducer: {
+    user: user.reducer,
+    cart: cart.reducer,
+  },
+});

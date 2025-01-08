@@ -10,6 +10,7 @@ import inike from "./db/inike.js"
 import ComNike from './components/ComNike.jsx';
 import Footer from './components/Footer.jsx';
 import axios from 'axios'
+import Cart from "./components/Cart.jsx";
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
                   </div>
                   </div></div>} /> */}
           <Route path="/detail/:id" element={<Detail shoes={shoes}/>} />
+          <Route path="/cart" element={<Cart/>}/>
           <Route path="/About" element={<About/>} />
           <Route path="/About/member" element={<Member/>} />
           <Route path="/About/location" element={<Location/>} />
