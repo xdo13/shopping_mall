@@ -26,11 +26,13 @@ function Cart(){
     textAlign: "center",
   };
 
+
+  state.cart.forEach(console.log);
   return(
     <>
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-12" style={{textAlign: "center"}}>
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-12" style={{textAlign: "center"}}>
             <h5 style={{ padding: "50px"}}>
               {state.user.name} {state.user.age}의 장바구니
             </h5>
@@ -45,24 +47,24 @@ function Cart(){
                 </tr>
               </thead>
               <tbody>
-                {state.cart.map((a, i)=> {
+                {state.cart.map((a, i)=> (
                   <tr key={i}>
-                    <td style={textverticalAlign}>{state.cart[i].id+1}</td>
+                    <td style={textverticalAlign}>{a.id+1}</td>
 
                     <td>
-                      <Link to={`/detail/${state.cart[i].id}`}>
+                      <Link to={`/detail/${a.id}`}>
                         <img
-                          src={`img/${state.cart[i].imgurl}`}
+                          src={`img/${a.imgUrl}`}
                           style={smallProductStyle}
                           />
                       </Link>
                     </td>
-                    <td style={textverticalAlign}>{state.cart[i].name}</td>
-                    <td style={textverticalAlign}>{state.cart[i].count}</td>
+                    <td style={textverticalAlign}>{a.name}</td>
+                    <td style={textverticalAlign}>{a.count}</td>
                     <td style={textverticalAlign}>
                       <Button
                       onClick={() => {
-                        dispatch(addCount(state.cart[i].id));
+                        dispatch(addCount(a.id));
                       }}
                       variant="outline-success"
                       style={{ marginRight: "10px"}}
@@ -72,7 +74,7 @@ function Cart(){
 
                       <Button
                         onClick={() => {
-                          dispatch(decreaseCount(state.cart[i].id));
+                          dispatch(decreaseCount(a.id));
                         }}
                         variant = "outline-warning"
                         style={{ marginRight: "10px"}}
@@ -80,7 +82,7 @@ function Cart(){
 
                         <Button
                         onClick={()=> {
-                          dispatch(deleteItem(state.cart[i].id));
+                          dispatch(deleteItem(a.id));
                         }}
                         variant = "outline-danger"
                         >
@@ -88,7 +90,7 @@ function Cart(){
                           </Button>
                         </td> 
                   </tr>
-                })}
+                ))}
               </tbody>
             </Table>
             <Button

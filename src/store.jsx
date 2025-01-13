@@ -20,19 +20,19 @@ let user = createSlice({
   let cart = createSlice({
     name : 'cart',
     initialState : [
-      {id : 0, imgurl:'shoes1.jpg', name : 'White and Black', count : 2},
-      {id : 1, imgurl:'shoes2.jpg', name : 'Red Knit', count : 1},
-      {id : 2, imgurl:'shoes3.jpg', name : 'Grey Yordan', count : 1}
+      {id : 0, imgUrl:'shoes1.jpg', name : 'White and Black', count : 2},
+      {id : 1, imgUrl:'shoes2.jpg', name : 'Red Knit', count : 1},
+      {id : 2, imgUrl:'shoes3.jpg', name : 'Grey Yordan', count : 1}
     ],
     reducers : {
      addCount(state, action) {
         let num = state.findIndex((a) => {
           return a.id === action.payload;
       });
-      console.log(num);
-      console.log("내가 선택한 상품"+ action.payload);
-      console.log("내가 추가한 상품아이디는"+ state[num].id);
-      console.log("내가 추가한 상품갯수는"+ state[num].count);
+      // console.log(num);
+      // console.log("내가 선택한 상품"+ action.payload);
+      // console.log("내가 추가한 상품아이디는"+ state[num].id);
+      // console.log("내가 추가한 상품갯수는"+ state[num].count);
 
       state[num].count++;
     },

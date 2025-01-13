@@ -42,6 +42,13 @@ let data = [
         price:120000
     },
     {
+        id: 5,
+        title: "Dark Flowey",
+        imgUrl : "img/shoes7.jpg",
+        content: "only 5 inches",
+        price:120000
+    },
+    {
         id : 7,
         title : "awesome shoes",
         imgUrl: "img/shoes8.jpg",
